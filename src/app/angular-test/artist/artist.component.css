@@ -1,0 +1,9 @@
+.image-gallery {
+    display: flex;
+  }
+  
+  .image-container {
+    margin-right: 10px;
+  }
+
+  

@@ -1,0 +1,11 @@
+<ng-container [formGroup]="form">
+    <mat-form-field class="w-full">
+      <mat-label>{{ label }}</mat-label>
+      <mat-select #selectBox (selectionChange)="onSelectionChange($event)" [formControlName]="control">
+        <mat-option *ngFor="let option of options" [value]="option[optionValue]">
+          {{ option[optionName] }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </ng-container>
+  

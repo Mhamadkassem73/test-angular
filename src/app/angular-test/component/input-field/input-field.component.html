@@ -1,0 +1,8 @@
+<ng-container [formGroup]="form">
+  <mat-form-field>
+    <label><b>{{ label }}</b></label>
+    <input matInput [formControlName]="control" [type]="type" [placeholder]="hint"
+           class="border border-gray-300 rounded-sm px-2 py-1">
+  </mat-form-field>
+</ng-container>
+  

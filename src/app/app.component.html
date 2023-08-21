@@ -1,0 +1,31 @@
+<div class="app-container">
+    <header>
+      <!-- Header content here -->
+    </header>
+  
+    <nav *ngIf="!isLoginPage">
+        <nav class="bg-black">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                  <!-- Your logo or brand content here -->
+                </div>
+                <div class="flex">
+                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Artist</button>
+                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search Artist</button>
+                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
+                </div>
+              </div>
+            </div>
+          </nav>
+    </nav>
+  
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  
+    <footer>
+      <!-- Footer content here -->
+    </footer>
+  </div>
+  
