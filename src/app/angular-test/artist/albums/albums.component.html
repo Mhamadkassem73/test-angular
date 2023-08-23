@@ -1,0 +1,32 @@
+<h2>Albums</h2>
+<ng-container *ngIf="displayedAlbums.length">
+    <div class="table-container mat-elevation-z8">
+        <table mat-table [dataSource]="displayedAlbums" class="w-full over">
+            <ng-container matColumnDef="album_group">
+                <th mat-header-cell *matHeaderCellDef class="ml-3">Album Group</th>
+                <td mat-cell *matCellDef="let album" class="ml-3">{{ album.album_group }}</td>
+            </ng-container>
+
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="ml-3">Name</th>
+                <td mat-cell *matCellDef="let album" class="ml-3">{{ album.name }}</td>
+            </ng-container>
+            <ng-container matColumnDef="release_date">
+                <th mat-header-cell *matHeaderCellDef class="ml-3">Release Date</th>
+                <td mat-cell *matCellDef="let album" class="ml-3">{{ album.release_date }}</td>
+            </ng-container> release_date
+
+
+            <tr mat-header-row *matHeaderRowDef="['album_group','name','release_date']"></tr>
+            <tr mat-row *matRowDef="let row; columns: ['album_group','name','release_date']"></tr>
+        </table>
+    </div>
+    <div class="pagination">
+        <button mat-button (click)="goToPreviousPage()" [disabled]="!previousUrl">Previous</button>
+        <button mat-button (click)="goToNextPage()" [disabled]="!nextUrl">Next</button>
+    </div>
+
+    <div class="return-button">
+        <button mat-button (click)="closePopup()">Return</button>
+    </div>
+  
