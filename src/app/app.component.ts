@@ -2,6 +2,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
+import { AuthenticationService } from './angular-test/service/authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -11,13 +12,33 @@ import { Router, NavigationEnd } from '@angular/router';
 export class AppComponent implements OnInit {
   isLoginPage!: boolean;
   title = 'angular-test-mohamad-kassem';
-  constructor(private router: Router) {}
+  constructor(private _router: Router,
+    private _authenticationService:AuthenticationService) {}
 
   ngOnInit() {
-    this.router.events.subscribe((event) => {
+    this._router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        this.isLoginPage = event.url === '/login'; // Adjust the URL to match your login page URL
+        console.log(event.url);
+        this.isLoginPage = event.url === '/'; 
       }
     });
+  }
+
+  goTo(url:string)
+  {
+    if(url=="login")
+    {
+      this._authenticationService.removeToken();
+      this._router.navigate(['']);
+    }
+    if(url=="addArtist")
+    {
+      this._router.navigate(['/add-artist']);
+    }
+    if(url=="searchArtist")
+    {
+      this._router.navigate(['/artist-search']);
+    }
+
   }
 }

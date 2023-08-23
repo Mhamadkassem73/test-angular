@@ -11,9 +11,9 @@
                   <!-- Your logo or brand content here -->
                 </div>
                 <div class="flex">
-                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Artist</button>
-                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search Artist</button>
-                  <button class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
+                  <button (click)= "goTo('addArtist')"  class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Add Artist</button>
+                  <button (click)= "goTo('searchArtist')" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Search Artist</button>
+                  <button (click)= "goTo('login')" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Logout</button>
                 </div>
               </div>
             </div>

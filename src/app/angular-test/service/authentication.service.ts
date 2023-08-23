@@ -13,29 +13,17 @@ export class AuthenticationService
 
     }
 
-    public login(form:{username:string,password:string})
-    {
-        // console.log(form); 
-        // console.log(api.doLogin); 
-        // return this._customHttpClient.postWithoutHeaders(api.doLogin,form);
-    }
+
 
     public setToken(token: string)
     {
         sessionStorage.setItem('Authorization',"bearer "+token);
     }
 
-    public removeToken(token: string)
+    public removeToken()
     {
         sessionStorage.removeItem('Authorization');
     }
-
-    public logout()
-    {
-        sessionStorage.clear();
-        this._router.navigateByUrl('/sign-in');
-    }
-
     public getToken()
     {
         return sessionStorage.getItem('Authorization');

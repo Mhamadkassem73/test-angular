@@ -47,7 +47,8 @@ export class ArtistSearchComponent implements OnInit {
     if (this.artistSearchForm.invalid) {
       this.artistSearchForm.markAllAsTouched();
       return;
-    } 
+    }
+
     const market = this.artistSearchForm.get('market')?.value;
     const q = this.artistSearchForm.get('q')?.value;
     this._router.navigate(['/artists',q ,market]);

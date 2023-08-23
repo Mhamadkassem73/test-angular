@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtistService } from '../service/artist.service';
 import { ActivatedRoute, Route, Router } from '@angular/router';
-
+import { AlbumsComponent } from './albums/albums.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-artist',
   templateUrl: './artist.component.html',
@@ -20,6 +21,7 @@ export class ArtistComponent implements OnInit {
     private _artistService: ArtistService,
     private _route: ActivatedRoute,
     private _router: Router,
+    private _dialog: MatDialog
   ) { }
 
 
@@ -85,18 +87,14 @@ export class ArtistComponent implements OnInit {
     }
   }
 
-  getAlbums(cleintId: string) {
-    this._artistService.getAlbums(cleintId).subscribe(response => {
-      if (response) {
-        console.log(response);
-      }
-    }, error => {
-      this._router.navigate(['/artist-search']);
+
+  getAlbums(artistId:string) {
+    console.log(artistId);  
+    this._dialog.open(AlbumsComponent, {
+      width: '600px',
+      data: { artistId: artistId}
     });
-    console.log(cleintId);
-
   }
-
 
 
 

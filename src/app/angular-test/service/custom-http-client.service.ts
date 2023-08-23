@@ -1,6 +1,8 @@
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
-import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
+import { Observable, catchError } from "rxjs";
+import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams  } from '@angular/common/http';
+import { Router } from "@angular/router";
+import { AuthenticationService } from "./authentication.service";
 
 @Injectable({
     providedIn: 'root',
@@ -9,10 +11,14 @@ import { HttpClient, HttpHeaders, HttpParams  } from '@angular/common/http';
 export class CustomHttpClient
 {
    api="https://api.spotify.com/v1/";
-    constructor(private _httpClient: HttpClient)
+    constructor(private _httpClient: HttpClient,
+      //private _auth:AuthenticationService,
+      private _router:Router,
+      )
     {
 
     }
+
 
     public get(url: string, form?: any): Observable<any> {
         const authorizationToken: string | null = sessionStorage.getItem('Authorization');
@@ -27,8 +33,13 @@ export class CustomHttpClient
             params = params.append(key, form[key]);
           }
         }
-        console.log(this._httpClient.get(this.api+url, { headers: headers, params: params }));
-        return this._httpClient.get(this.api+url, { headers: headers, params: params });
+        console.log (this._httpClient.get(this.api+url, { headers: headers, params: params }));
+
+        // this._httpClient.get(this.api+url, { headers: headers, params: params }).subscribe(response => {
+        // }, error => {
+        //   this.handle401Error(error);
+        // })
+       return this._httpClient.get(this.api+url, { headers: headers, params: params });
       }
 
 
@@ -39,8 +50,11 @@ export class CustomHttpClient
         if (authorizationToken) {
           headers = headers.set('Authorization', authorizationToken);
         }
-
-        return this._httpClient.get(url, { headers: headers});
+        // this._httpClient.get(url, { headers: headers}).subscribe(response => {
+        // }, error => {
+        //   this.handle401Error(error);
+        // })
+       return this._httpClient.get(url, { headers: headers});
       }
 
 

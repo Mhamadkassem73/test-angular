@@ -12,7 +12,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     imports  : [
         MatCheckboxModule,
         MatFormFieldModule,
-        MatIconModule,
         MatInputModule,
         MatSelectModule,
         MatRadioModule,

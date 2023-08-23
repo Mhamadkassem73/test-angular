@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Artist } from '../models/artist.model';
 import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@angular/forms';
+
 
 @Component({
   selector: 'app-add-artist',
@@ -9,7 +9,8 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormArray } from '@ang
 })
 export class AddArtistComponent implements OnInit {
   addArtistForm!: FormGroup;
-  constructor(private _formBuilder: FormBuilder) { }
+  constructor(private _formBuilder: FormBuilder,
+    ) { }
   ngOnInit(): void {
     this.addArtistForm = this._formBuilder.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
@@ -43,14 +44,14 @@ export class AddArtistComponent implements OnInit {
 
 
   submitForm() {
-    console.log(this.addArtistForm.value);
     if (this.addArtistForm.invalid) {
       this.addArtistForm.markAllAsTouched();
-      return;
+      return; 
     }
     else{
       console.log(this.addArtistForm.value);
-      // You can send the form data to your server or perform other actions
+      // this._artistState.dispatch(new addArtist(this.addArtistForm.value));
+      // console.log(this._artistState.getAlbums());
     }
   }
 
